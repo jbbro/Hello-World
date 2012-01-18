@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+	
+	<script type="text/template" id="note-list-item-template">
+		<a href="#note_<%= note.id %>" > <%= note.get('title') %></a>
+	</script> 
+	
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link rel="stylesheet" href="css/jquery.mobile-1.0rc2.css" charset="utf-8">
+		<script src="js/jquery-1.7.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/underscore-1.2.1.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/backbone-0.5.3.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/backbone.localStorage.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.mobile-1.0rc2.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/application.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	
+	<body>
+	
+	
+		<!-- Page d'accueil -->
+		<div id="home" data-role="page">
+
+			<div data-role="header">
+				<h1>Geo Notes</h1>
+				<a href="#new" data-rel="dialog" data-transition="pop" data-role="button" data-icon="plus" class="ui-btn-right">New</a>
+			</div>
+
+			<div data-role="content">
+				<a href="#new" data-rel="dialog" data-transition="pop" data-role="button" data-icon="plus" data-theme="b">New Note</a>
+
+			</div>
+			
+			<li id="all_notes">
+			</li>
+			
+		</div>
+		
+		
+
+		<!-- Boite de dialogue pour une nouvelle note -->
+		<div id="new" data-role="page" data-theme="b">
+
+			<div data-role="header">
+				<h1>New Note</h1>
+			</div>
+
+			<div data-role="content">
+				<form action="#" method="post">
+					<div data-role="fieldcontain">
+						<label for="title">Title</label>
+						<input id="title" name="title" value="">
+					</div>
+
+				<div data-role="fieldcontain">
+					<label for="body">Body</label>
+					<textarea id="body" name="body" ></textarea>
+				</div>
+
+				<button data-icon="check" data-theme="b">Save</button>
+				</form>
+			</div>
+
+		</div>
+
+	</body>
+</html>
