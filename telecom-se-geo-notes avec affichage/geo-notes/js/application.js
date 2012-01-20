@@ -13,13 +13,13 @@ var NotesApp = (function(){
 	App.stores.notes = new Store('notes');
 	
 	//initialize Geolocalisation
-	var geo = getGeolocalisation;
+	/*var geo = getGeolocalisation;
 	geo.watchId();
 	
 	setInterval(function(){
 		console.log(geo.latitude);
 		}
-	, 30000);
+	, 30000);*/
 
 
 	//Nom : Note----------------------------------------------------------------------
@@ -131,15 +131,16 @@ var NotesApp = (function(){
 			console.log('NoteListView : initialize end');
 		},
 		
-		//Le problème est que l'évènement n'est pas lancé/capté
 		addOne: function(note){
 			console.log('addOne');
 			var view = new NoteListItemView({model: note});
-			$(this.el).append(view.render().el);
 			
+			$(this.el).append(view.render().el);
+				
 			if('mobile' in $){
 				$(this.el).listview().listview('refresh');
 			}
+			
 		},
 		
 		addAll: function(){
@@ -152,12 +153,13 @@ var NotesApp = (function(){
 	});
 	
 	//Nom : NoteListItemView----------------------------------------------------------
-	//Role : 
+	//Role : Affiche la liste des tâches en prenant comme paramètre le template
+	//		 nommé "#note-list-item-template"
 	var NoteListItemView = Backbone.View.extend({
 		tagName: 'LI',
 		template: _.template($('#note-list-item-template').html()),
 		
-		events: {
+		/*events: {
 			"coordUpdated" : "updateView"
 		  },
 		
@@ -174,7 +176,7 @@ var NotesApp = (function(){
 			//Ferme la boite de dialogue
 			$('.ui-dialog').dialog('close');
 		
-		},
+		},*/
 		
 		initialize: function(){
 			console.log('NoteListViewItem : initialize');
@@ -210,7 +212,10 @@ var NotesApp = (function(){
 		el: $('#all_notes'),
 		collection: App.collections.all_notes
 	});
- 
+	
+	//$(document).getElementById("#voirUneTache").click(function() {
+	//	  alert('voirUneTache');
+	//});	
 	return App;
 
 })();

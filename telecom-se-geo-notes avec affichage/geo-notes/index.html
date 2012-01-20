@@ -69,19 +69,28 @@
 			</ul>
 		</div>
 	</div>
+	
 
 	<script type="text/template" id="note-list-item-template">
-		<a href="#note_<%= note.id %>" > <%= note.get('title') %> </a>
+		<a id="voirUneTache" href="#"> <%= note.get('title') %> </a>
 	</script>
-
+	
+	
 	<script src="js/jquery-1.7.js" ></script>
 	<script src="js/underscore-1.2.1.js" ></script>
 	<script src="js/backbone-0.5.3.js" ></script>
 	<script src="js/backbone.localStorage.js" ></script>
 	<script src="js/geolocalisation.js" ></script>
 	<script src="js/jquery.mobile-1.0rc2.js" ></script>
-	<script src="js/application.js" ></script>	
-
+	<script src="js/application.js" ></script>
+	
+	<script>
+	  $('#voirUneTache').click(function() {
+		alert('voirUneTache');
+	  });
+	</script>
+	
+	
 </body>
 </html>
 
