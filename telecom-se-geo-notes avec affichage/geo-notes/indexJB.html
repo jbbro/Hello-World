@@ -1,0 +1,250 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+	 
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="stylesheet" href="css/jquery.mobile-1.0rc2.css">
+
+
+</head>
+<body>
+
+
+
+<!--ACCUEIL-->
+<!--------------------------------------------------------------------------------------------------->
+
+	<div id="home" data-role="page">
+
+		<div data-role="header">
+			<h1>TO DO</h1>
+		</div>
+
+		<div data-role="content">
+			
+				<div data-role="fieldcontain">
+					<label for="Identifiant">Identifiant</label>
+					<input type="text" name="Identifiant" id="Identifiant" />
+				</div>
+				
+				<div data-role="fieldcontain">
+					<label for="Mdp">Mot de passe</label>
+					<input type="text" name="Mdp" id="Mdp" />
+				</div>
+				
+				<a href="#Vuetache" data-role="button" data-theme="b">Se connecter</a>
+				<a href="#Creercompte" data-transition="pop" data-rel="dialog">Créer un compte</a>
+				
+		</div>
+
+	</div>
+	
+	
+<!--CREER UN COMPTE-->
+<!--------------------------------------------------------------------------------------------------->
+
+	<div id="Creercompte" data-role="page">
+		<div data-role="header">
+			<h1>Création de compte</h1>
+		</div>
+		<div data-role="content" data-theme="b">
+			<form action="#" method="post">
+				<div data-role="fieldcontain">
+					<label for="Identifiant">Identifiant</label>
+					<input type="text" name="Identifiant" id="Identifiant" />
+				</div>
+				<div data-role="fieldcontain">
+					<label for="Mdp">Mot de passe</label>
+					<input type="text" name="Mdp" id="Mdp" />
+				</div>
+				<div data-role="fieldcontain">
+					<label for="email">Adresse mail</label>
+					<input type="text" name="email" id="email" />
+				</div>
+				<button data-icon="check" data-theme="b">Soumettre</button>
+			</form>
+		</div>
+	</div>
+	
+	
+	
+<!--AFFICHAGE DES TACHES-->
+<!--------------------------------------------------------------------------------------------------->
+	
+	<div id="Vuetache" data-role="page">
+		<div data-role="header">
+			<div data-role="navbar">
+			<ul>
+				<li><a href="#Vuecategorie" >Catégories</a></li>
+				<li><a href="#new" data-rel="dialog" data-transition="pop" data-role="button" data-icon="plus" data-theme="b">Ajouter tâche</a></li>
+			</ul>
+			</div>
+		</div>
+
+		<div data-role="content" data-theme="b">
+			<div class="content-primary">
+				<!--
+				<ul data-role="listview">
+					<li>
+						<a href="#Unetache">Manger des pommes</a>
+						<p>Parceque c'est bon pour la santé</p>
+					</li>
+					<li>
+						<a href="#Unetache">Manger des poires</a>
+						<p>Parceque c'est bon pour la ligne</p>
+					</li>
+					<li>
+						<a href="#Unetache">Manger des fraises</a>
+						<p>Parceque ça rend aimable</p>
+					</li>
+				</ul>
+				-->
+				<ul data-role="listview" id="all_notes">
+			</ul>
+			</div>
+		</div>
+
+	</div>
+	
+
+	<!-- Notes list 
+	<div id="all" data-role="page">
+
+		<div data-role="header">
+			<a href="#home" data-role="button" data-icon="arrow-l" data-rel="back">Back</a>
+			<h1>All Notes</h1>
+		</div>
+
+		<div data-role="content">
+			<ul data-role="listview" id="all_notes">
+			</ul>
+		</div>
+	</div>
+	-->
+	
+<!--AFFICHAGE DES CATEGORIES-->
+<!--------------------------------------------------------------------------------------------------->
+
+	<div id="Vuecategorie" data-role="page">
+		<div data-role="header">
+			<div data-role="navbar">
+			<ul>
+				<li><a href="#Vuetache" >Tâches</a></li>
+				<li><a href="#Unecategorie">Ajouter Catégorie</a></li>
+			</ul>
+			</div>
+		</div>
+
+		<div data-role="content" data-theme="b">
+			<div class="content-primary">	
+				<ul data-role="listview">
+					<li>
+						<a href="#Unecategorie">Maison</a>						
+					</li>
+					<li>
+						<a href="#Unecategorie">Travail</a>						
+					</li>
+					<li>
+						<a href="#Unecategorie">Autres</a>						
+					</li>
+				</ul>
+			</div>
+		</div>
+
+	</div>
+
+	
+<!--AFFICHAGE D'UNE TACHE-->
+<!--------------------------------------------------------------------------------------------------->
+
+	<div id="new" data-role="page" data-theme="b">
+
+		<div data-role="header">
+		<h1>New Note</h1>
+		</div>
+
+		<div data-role="content">
+		<form action="#" method="post">
+		<div data-role="fieldcontain">
+		<label for="title">Title</label>
+		<input id="title" name="title" value="">
+		</div>
+
+		<div data-role="fieldcontain">
+		<label for="body">Body</label>
+		<textarea id="body" name="body" ></textarea>
+		</div>
+
+		<button data-icon="check" data-theme="b">Save</button>
+		</form>
+		</div>
+
+	</div>
+
+	
+<!--AFFICHAGE D'UNE CATEGORIE-->
+<!--------------------------------------------------------------------------------------------------->
+
+	<div id="Unecategorie" data-role="page">
+		<div data-role="header">
+			<a href="#Vuecategorie" data-role="button" data-icon="delete" data-iconpos="notext"></a> 
+			<h1>Une catégorie</h1>
+		</div>
+
+		<div data-role="content" data-theme="b">
+			<form action="#" method="post">
+				<div data-role="fieldcontain">
+					<label for="titre">Titre</label>
+					<input type="text" name="titre" id="titre" />
+				</div>				
+				<div data-role="fieldcontain">
+					<label for="coordonnees">Coordonnées</label>
+					<input type="text" name="coordonnees" id="coordonnees" />
+				</div>				
+				<fieldset class="ui-grid-a">
+					<div class="ui-block-a"><button type="submit" data-theme="d">Supprimer</button></div>
+					<div class="ui-block-b"><button type="submit" data-theme="b">Valider</button></div>
+				</fieldset>
+			</form>
+		</div>
+		<div data-role="content" data-theme="b">
+			<div class="content-primary">	
+				<ul data-role="listview">
+					<li>
+						<a href="#Unetache">Nouvelle Tâche ...</a>	
+						</p>
+						</li>
+					<li>
+						<a href="#Unetache">Manger des pommes</a>
+						<p>Parceque c'est bon pour la santé</p>
+					</li>
+					<li>
+						<a href="#Unetache">Manger des poires</a>
+						<p>Parceque c'est bon pour la ligne</p>
+					</li>
+					<li>
+						<a href="#Unetache">Manger des fraises</a>
+						<p>Parceque ça rend aimable</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+	</div>
+	
+</body>
+
+	<script type="text/template" id="note-list-item-template">
+		<a href="#note_<%= note.id %>" ><%= note.get('title') %></a>
+	</script> 
+	
+	<script src="js/jquery-1.7.js"></script>
+	<script src="js/underscore-1.2.1.js"></script>
+	<script src="js/backbone-0.5.3.js"></script>
+	<script src="js/backbone.localStorage.js"></script>
+	<script src="js/jquery.mobile-1.0rc2.js"></script>
+	<script src="js/geolocalisationJB.js"></script>
+	<script src="js/application.js"></script>
+	
+</html>
