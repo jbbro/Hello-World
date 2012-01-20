@@ -9,8 +9,18 @@ var NotesApp = (function(){
 		collections: {}
 	};
 	
-	//On initilise la base de données, appellée "store"
+	//On initilise la base de données, appellée "notes"
 	App.stores.notes = new Store('notes');
+	
+	//initialize Geolocalisation
+	var geo = getGeolocalisation;
+	geo.watchId();
+	
+	setInterval(function(){
+		console.log(geo.latitude);
+		}
+	, 30000);
+
 
 	//Nom : Note----------------------------------------------------------------------
 	//Role : Classe qui hérite de Backbone.Model et la surcharge
@@ -22,11 +32,11 @@ var NotesApp = (function(){
 
 		initialize: function(){
 			console.log('Note : initialize')
-			if (!this.get('title')) {//On récupère le titre de la note à l'aide du label "title" dans le formulaire
+			if (!this.get('title')) {//Si la note ne comporte pas de titre, son titre devient "Note @ 18-01-12"
 				this.set({title: "Note @ " + Date()})
 			};
 
-			if (!this.get('body')) {//On récupère le contenu de la note à l'aide du label "body" dans le formulaire
+			if (!this.get('body')) {//Si la note ne comporte pas de body, on le rempli par "No Content"
 				this.set({body: "No Content"})
 			};
 		}
@@ -147,6 +157,25 @@ var NotesApp = (function(){
 		tagName: 'LI',
 		template: _.template($('#note-list-item-template').html()),
 		
+		events: {
+			"coordUpdated" : "updateView"
+		  },
+		
+		updateView: function(event){  //Fonction qui met à jour l'affichage des taches selon la localisation du client
+		
+			console.log('NoteListItemView : updateView');
+		
+			//Par défaut le web browser soumet le formulaire, à l'aide de la commande suivante on sort de ce mode par défaut
+			event.preventDefault();
+
+			//Stop le bublling de notre code
+			event.stopPropagation();
+
+			//Ferme la boite de dialogue
+			$('.ui-dialog').dialog('close');
+		
+		},
+		
 		initialize: function(){
 			console.log('NoteListViewItem : initialize');
 			_.bindAll(this, 'render');
@@ -157,8 +186,7 @@ var NotesApp = (function(){
 			console.log('NoteListItemView : render');
 			$(this.el).html(this.template({ note: this.model }));
 			return this;
-		}
-		
+		}		
 	});
 	
 	//Main----------------------------------------------------------------------------

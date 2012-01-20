@@ -8,9 +8,10 @@ var getGeolocalisation = {
 	
 	//Acquisition des coordonnées GPS (polling récurrent)
 	init: function(position){
-		//alert("Latitude : " + position.coords.latitude + ", longitude : " + position.coords.longitude);
 		getGeolocalisation.latitude = position.coords.latitude;
 		getGeolocalisation.longitude = position.coords.longitude;
+		jQuery.event.trigger('coordUpdated');
+		console.log('getGeolocalisation : init');
 	},
 	
 	//Gestion des erreurs
@@ -30,22 +31,11 @@ var getGeolocalisation = {
 
 	watchId: function(){		
 		navigator.geolocation.watchPosition(getGeolocalisation.init, getGeolocalisation.error, {enableHighAccuracy:true});
-		/*
-		navigator.geolocation.watchPosition(
-				function(position){
-					console.log('init');
-					alert("Latitude : " + position.coords.latitude + ", longitude : " + position.coords.longitude);
-					latitude = position.coords.latitude;
-					longitude = position.coords.longitude;
-				}, null, {enableHighAccuracy:true});*/
 	},
 	
 	//Fin de l'acquisition des coordonnées GPS (fin du polling)
 	stop: function(){
 		navigator.geolocation.clearWatch(watchId);
-	},
- 
-	getLatitude: function(){return latitude;},
-	getLongitude: function(){return longitude;}
+	}
 
 };
